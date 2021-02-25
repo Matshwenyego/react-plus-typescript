@@ -30,7 +30,7 @@ const SpecialOffer: React.FC<Props> = ({pizza, addToCart}) => {
 
 export default withAddToCart(SpecialOffer);
 
-// Render without Higher Order Component
+// Using RenderProps to render SpecialOffer
 
 // interface Props {
 //     pizza: Pizza,

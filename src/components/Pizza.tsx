@@ -1,7 +1,6 @@
 import React from 'react';
 import PizzaCSS from './Pizza.module.css';
-import {useStateDispatch} from './AppState';
-import {AddToCartProps, withAddToCart} from './AddToCart';
+import {AddToCartProps, useAddToCart, withAddToCart} from './AddToCart';
 import {Pizza} from '../types';
 
 interface Props extends AddToCartProps {
@@ -27,3 +26,26 @@ const PizzaItem: React.FC<Props> = ({ pizza, addToCart }) => {
 }
 
 export default withAddToCart(PizzaItem);
+
+//using custom hook to render Pizza Component
+
+// interface Props {
+//     pizza: Pizza
+// }
+
+// const PizzaItem: React.FC<Props> = ({ pizza }) => {
+//     const addToCart = useAddToCart();
+//     const handleAddToCartClick = () => {
+
+//     };
+//     return (
+//         <li className={PizzaCSS.container}>
+//             <h2>{pizza.name}</h2>
+//             <p>{pizza.description}</p>
+//             <p>{pizza.price}</p>
+//             <button type="button" onClick={handleAddToCartClick}>Add to Cart</button>
+//         </li>
+//     )
+// }
+
+// export default PizzaItem;
