@@ -1,0 +1,14 @@
+.container {
+    border: 1px solid burlywood;
+    margin: 0 0 10px;
+    padding: 10px;
+    list-style: none;
+  }
+  
+  .container h2 {
+    margin: 0 0 10px;
+  }
+  
+  .container p {
+    margin-bottom: 0;
+  }
