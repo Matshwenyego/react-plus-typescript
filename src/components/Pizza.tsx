@@ -1,48 +1,20 @@
 import React from 'react';
 import PizzaCSS from './Pizza.module.css';
-import {useSetState} from './AppState';
+import {AddToCartProps, useAddToCart, withAddToCart} from './AddToCart';
+import {Pizza} from '../types';
 
-
-
-interface Pizza {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-}
-
-interface Props {
+interface Props extends AddToCartProps {
     pizza: Pizza
 }
 
-const Pizza: React.FC<Props> = ({ pizza }) => {
-    const setState = useSetState();
+const PizzaItem: React.FC<Props> = ({ pizza, addToCart }) => {
     const handleAddToCartClick = () => {
-        setState((state) => {
-            const itemExist = state.cart.items.find((item) => item.id === pizza.id);
-            return {
-                ...state, 
-                cart: {
-                    ...state.cart, 
-                    items: itemExist
-                        ? state.cart.items.map((item) => {
-                            if (item.id === pizza.id) {
-                                return {...item, quantity: item.quantity +1 }
-                            }
-                            return item;
-                        }):[
-                        ...state.cart.items,
-                        {
-                            id: pizza.id, 
-                            name: pizza.name, 
-                            price: pizza.price,
-                            quantity: 1,
-                        },
-                    ]
-                }
-            };
-        });
-    }
+        addToCart({
+            id: pizza.id, 
+            name: pizza.name,
+            price: pizza.price,
+        })
+    };
     return (
         <li className={PizzaCSS.container}>
             <h2>{pizza.name}</h2>
@@ -53,4 +25,27 @@ const Pizza: React.FC<Props> = ({ pizza }) => {
     )
 }
 
-export default Pizza;
+export default withAddToCart(PizzaItem);
+
+//using custom hook to render Pizza Component
+
+// interface Props {
+//     pizza: Pizza
+// }
+
+// const PizzaItem: React.FC<Props> = ({ pizza }) => {
+//     const addToCart = useAddToCart();
+//     const handleAddToCartClick = () => {
+
+//     };
+//     return (
+//         <li className={PizzaCSS.container}>
+//             <h2>{pizza.name}</h2>
+//             <p>{pizza.description}</p>
+//             <p>{pizza.price}</p>
+//             <button type="button" onClick={handleAddToCartClick}>Add to Cart</button>
+//         </li>
+//     )
+// }
+
+// export default PizzaItem;
