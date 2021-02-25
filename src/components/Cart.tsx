@@ -3,9 +3,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import {AppStateContext} from './AppState';
 import CartCSS from './Cart.module.css';  
 
-interface Props {
-
-}
+interface Props {}
 
 interface State {
     isOpen: boolean;
