@@ -5,7 +5,6 @@ export interface AddToCartProps {
     addToCart: (item: Omit<CartItem, 'quantity'>) => void;
 }
 
-//HOC
 export function withAddToCart<OriginalProps>(
     ChildComponent: React.ComponentType<OriginalProps>
     ) {
